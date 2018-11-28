@@ -1,0 +1,32 @@
+<div class="jumbotron row burger-view">
+    <div class="col-6 h-100 yes-burger text-center">
+            <div class="card-header bg-info text-white">
+                <h3>To Eat</h3>
+            </div>
+                    {{#each burgers}}
+                        {{#unless devoured}}
+                            <button type="button" data-burgerid="{{this.id}}" class="btn btn-secondary py-1 shadow eat-btn mt-2 w-100">{{burger_name}} - Click Me</button>
+                        {{/unless}}
+                    {{/each}}
+    </div>
+    <div class="col-6 h-100 no-burger text-center">
+            <div class="card-header bg-info text-white">
+                <h3>All Gone</h3>
+            </div>
+                {{#each burgers}}
+                    {{#if devoured}}
+                        <div class="mt-2 w-100 btn-secondary py-1 rounded shadow">
+                            {{burger_name}}
+                        </div>
+                    {{/if}}
+                {{/each}}
+    </div> 
+</div>
+<div class="row">
+    <form class="w-100">
+        <div class="form-group">
+            <input type="text" class="form-control" id="burgerName" placeholder="Enter burger name">
+        </div>
+        <button type="button" class="btn add-btn">Add Burger</button>
+    </form>
+</div>

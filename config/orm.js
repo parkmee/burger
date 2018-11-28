@@ -8,7 +8,7 @@ const printQuestionMarks = (num) => {
     return arr.toString();
 }
 
-const objToSql = ob => {
+/* const objToSql = ob => {
     let arr = [];
     for (key in ob) {
         const value = ob[key];
@@ -20,10 +20,10 @@ const objToSql = ob => {
         }
     }
     return arr.toString();
-}
+} */
 
 const orm = {
-    selectAll(table, cb) {
+    selectAll: (table, cb) => {
         const qryString = `SELECT * FROM ${table}`;
         connection.query(qryString, (err, data) => {
             if (err) throw err;
@@ -32,18 +32,19 @@ const orm = {
         });
     },
 
-    insertOne(table, cols, vals, cb) {
-        const qryString = `INSERT INTO ${table} (${cols.toString()}) VALUES (${printQuestionMarks(vals.length)})`;
+    insertOne: (table, columns, values, cb) => {
+        const qryString = `INSERT INTO ${table} (${columns.toString()}) VALUES (${printQuestionMarks(values.length)})`;
         console.log(qryString);
-        connection.query(qryString, vals, (err, data) => {
+        connection.query(qryString, values, (err, data) => {
             if (err) throw err;
             console.log(data);
             cb(data);
         });
     },
     
-    updateOne(table, objColVals, condition, cb) {
-        const qryString = `UPDATE ${table} SET ${objToSql(objColVals)} WHERE ${condition}`;
+    updateOne: (table, ojbValue, condition, cb) => {
+        const qryString = `UPDATE ${table} SET ${objValue} WHERE ${condition}`;
+        console.log(qryString);
         connection.query(qryString, (err, data) => {
             if (err) throw err;
             console.log(data);
