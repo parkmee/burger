@@ -5,7 +5,7 @@
             </div>
                     {{#each burgers}}
                         {{#unless devoured}}
-                            <button type="button" data-burgerid="{{this.id}}" class="btn btn-secondary py-1 shadow eat-btn mt-2 w-100">{{burger_name}} - Click Me</button>
+                            <button type="button" data-id="{{this.id}}" class="btn btn-secondary py-1 shadow eat-btn mt-2 w-100">{{burger_name}} - Click Me</button>
                         {{/unless}}
                     {{/each}}
     </div>
@@ -27,6 +27,41 @@
         <div class="form-group">
             <input type="text" class="form-control" id="burgerName" placeholder="Enter burger name">
         </div>
-        <button type="button" class="btn add-btn">Add Burger</button>
+        <button type="button" class="btn" id="add-btn">Add Burger</button>
     </form>
 </div>
+
+<script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+    $(document).on('click','.eat-btn',() => {
+        event.preventDefault();
+        const id = $(this).data('id');
+        const burger = {
+            devoured: true
+        };
+        console.log(burger);
+        $.ajax(`./api/burger/${id}`, {
+            type: "PUT",
+            data: burger
+        }).then(() => {
+            location.reload();
+        });
+    });
+
+    $('#add-btn').on('click', () => {
+        event.preventDefault();
+        if($('#burgerName')) {
+            const burger = {
+                burger_name: $('#burgerName').val().trim(),
+                devoured: false
+            }
+        }
+        $.ajax(`/api/burger`, {
+            type: "POST",
+            data: burger
+        }).then(() => {
+            location.reload();
+        });
+    });
+
+</script>
