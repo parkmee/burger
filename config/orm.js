@@ -22,7 +22,7 @@ const objToSql = ob => {
     return arr.toString();
 }
 
-class orm {
+const orm = {
     selectAll(table, cb) {
         const qryString = `SELECT * FROM ${table}`;
         connection.query(qryString, (err, data) => {
@@ -30,7 +30,7 @@ class orm {
             console.log(data);
             cb(data);
         });
-    }
+    },
 
     insertOne(table, cols, vals, cb) {
         const qryString = `INSERT INTO ${table} (${cols.toString()}) VALUES (${printQuestionMarks(vals.length)})`;
@@ -40,8 +40,8 @@ class orm {
             console.log(data);
             cb(data);
         });
-    }
-
+    },
+    
     updateOne(table, objColVals, condition, cb) {
         const qryString = `UPDATE ${table} SET ${objToSql(objColVals)} WHERE ${condition}`;
         connection.query(qryString, (err, data) => {
