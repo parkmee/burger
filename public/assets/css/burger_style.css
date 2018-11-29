@@ -6,7 +6,7 @@ body {
 }
 
 #page-title {
-    color: #ffe28a;
+    color: ghostwhite;
     padding: 20px;
     font-family: 'Pacifico', cursive;
 }
@@ -17,6 +17,8 @@ body {
 
 .section-title {
     color: #ffe28a;
+    font-family: 'Fahkwang', sans-serif;
+    
 }
 
 button {
