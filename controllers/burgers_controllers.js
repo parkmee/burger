@@ -1,6 +1,6 @@
 // dependencies
 const express = require('express');
-const burger = require('../models/burger.js');
+const burger = require('../models/burger');
 
 // router
 const router = express.Router();
@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/api/burger', (req, res) => {
+    console.log(req.body);
     burger.create([
         "burger_name", 
         "devoured"

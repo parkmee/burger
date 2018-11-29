@@ -31,7 +31,6 @@
     </form>
 </div>
 
-<script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
     $(document).on('click','.eat-btn',() => {
         event.preventDefault();
@@ -50,9 +49,12 @@
 
     $('#add-btn').on('click', () => {
         event.preventDefault();
-        if($('#burgerName')) {
-            const burger = {
-                burger_name: $('#burgerName').val().trim(),
+        const burgerName = $('#burgerName').val().trim();
+        console.log(burgerName);
+        let burger = {};
+        if(burgerName) {
+            burger = {
+                burger_name: burgerName,
                 devoured: false
             }
         }
