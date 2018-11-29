@@ -32,9 +32,8 @@
 </div>
 
 <script type="text/javascript">
-    $(document).on('click','.eat-btn',() => {
-        event.preventDefault();
-        const id = $(this).data('id');
+    $('.eat-btn').on('click', function () {
+        const id = $(this).attr('data-id');
         const burger = {
             devoured: true
         };
@@ -58,7 +57,7 @@
                 devoured: false
             }
         }
-        console.log(burger);
+        //console.log(burger);
         $.ajax(`/api/burger`, {
             type: "POST",
             data: burger

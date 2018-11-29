@@ -10,12 +10,12 @@ router.get('/', (req, res) => {
         const burgerObj = {
             burgers: data
         };
-        console.log(burgerObj);
+        //console.log(burgerObj);
         res.render("index", burgerObj);
     });
 });
 
-router.post("/api/burger", function (req, res) {
+router.post("/api/burger", (req, res) => {
     burger.create([
         "burger_name",
         "devoured"
@@ -28,6 +28,8 @@ router.post("/api/burger", function (req, res) {
 });
 
 router.put('/api/burger/:id', (req, res) => {
+    console.log("hi");
+    console.log(req.params);
     const condition = `id = ${req.params.id}`;
     console.log(`condition: ${condition}`);
 
