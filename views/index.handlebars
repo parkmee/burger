@@ -15,7 +15,7 @@
             </div>
                 {{#each burgers}}
                     {{#if devoured}}
-                        <div class="mt-2 w-100 btn-secondary py-1 rounded shadow">
+                        <div class="mt-2 w-100 bg-secondary text-white py-1 rounded shadow">
                             {{burger_name}}
                         </div>
                     {{/if}}
@@ -50,7 +50,7 @@
     $('#add-btn').on('click', () => {
         event.preventDefault();
         const burgerName = $('#burgerName').val().trim();
-        console.log(burgerName);
+        //console.log(burgerName);
         let burger = {};
         if(burgerName) {
             burger = {
@@ -58,6 +58,7 @@
                 devoured: false
             }
         }
+        console.log(burger);
         $.ajax(`/api/burger`, {
             type: "POST",
             data: burger

@@ -15,18 +15,15 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/api/burger', (req, res) => {
-    console.log(req.body);
+router.post("/api/burger", function (req, res) {
     burger.create([
-        "burger_name", 
+        "burger_name",
         "devoured"
     ], [
-        req.body.burgerName, 
+        req.body.burger_name,
         false
     ], result => {
-        res.json({
-            id: result.insertId
-        });
+        res.json({ id: result.insertId });
     });
 });
 
