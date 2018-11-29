@@ -1,35 +1,39 @@
-<div class="jumbotron row burger-view">
-    <div class="col-6 h-100 yes-burger text-center">
-            <div class="card-header bg-info text-white">
-                <h3>To Eat</h3>
-            </div>
-                    {{#each burgers}}
-                        {{#unless devoured}}
-                            <button type="button" data-id="{{this.id}}" class="btn btn-secondary py-1 shadow eat-btn mt-2 w-100">{{burger_name}} - Click Me</button>
-                        {{/unless}}
-                    {{/each}}
+<div class="row burger-view">
+    <div class="col-6 pr-0">
+        <h3 class="section-title text-center">Yum, Yum, Get Some!</h3>
+        {{#each burgers}}
+            {{#unless devoured}}
+                <button type="button" data-id="{{this.id}}" class="btn btn-secondary py-1 shadow eat-btn mt-2 col-8">
+                    {{burger_name}}
+                </button>
+                <button type="button" data-id="{{this.id}}" class="btn btn-secondary py-1 shadow eat-btn mt-2 col-3">
+                    Eat Me
+                </button>
+            {{/unless}}
+        {{/each}}
     </div>
-    <div class="col-6 h-100 no-burger text-center">
-            <div class="card-header bg-info text-white">
-                <h3>All Gone</h3>
-            </div>
-                {{#each burgers}}
-                    {{#if devoured}}
-                        <div class="mt-2 w-100 bg-secondary text-white py-1 rounded shadow">
-                            {{burger_name}}
-                        </div>
-                    {{/if}}
-                {{/each}}
-    </div> 
+    <div class="col-6">
+        <h3 class="section-title text-center">Too Late, I Ate!</h3>
+        {{#each burgers}}
+            {{#if devoured}}
+                <button class="mt-2 w-100 btn-secondary text-white py-1 rounded shadow" disabled>
+                    {{burger_name}}
+                </button>
+            {{/if}}
+        {{/each}}
+    </div>
 </div>
+<hr>
 <div class="row">
-    <form class="w-100">
+    <form class="col-5 mt-3">
         <div class="form-group">
-            <input type="text" class="form-control" id="burgerName" placeholder="Enter burger name">
+            <input type="text" class="form-control shadow" id="burgerName" placeholder="Enter burger name">
         </div>
-        <button type="button" class="btn" id="add-btn">Add Burger</button>
+        <button type="button" class="btn btn-secondary shadow" id="add-btn">Add Burger</button>
     </form>
 </div>
+
+
 
 <script type="text/javascript">
     $('.eat-btn').on('click', function () {
@@ -51,7 +55,7 @@
         const burgerName = $('#burgerName').val().trim();
         //console.log(burgerName);
         let burger = {};
-        if(burgerName) {
+        if (burgerName) {
             burger = {
                 burger_name: burgerName,
                 devoured: false

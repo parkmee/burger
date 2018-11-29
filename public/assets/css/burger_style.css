@@ -1,3 +1,26 @@
-.burger-view {
-    height: 500px;
+body {
+    background-image: url(../img/burger-img.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right bottom;
 }
+
+#page-title {
+    color: #ffe28a;
+    padding: 20px;
+    font-family: 'Pacifico', cursive;
+}
+
+.burger-view {
+    height: auto;
+}
+
+.section-title {
+    color: #ffe28a;
+}
+
+button {
+    color: #ffe28a;
+}
+
+
